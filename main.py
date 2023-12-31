@@ -51,12 +51,10 @@ while coffee_machine_on:
                   f'Coffee: {resources["coffee"]} g\n '
                   f'Profit: ${resources["profit"]}')
         else:
-            if resources["water"] < MENU[types_of_coffees]["ingredients"]["water"]:
-                print("Sorry there is no enough water")
-            elif resources["milk"] < MENU[types_of_coffees]["ingredients"]["milk"]:
-                print("Sorry there is no enough milk")
-            elif resources["coffee"] < MENU[types_of_coffees]["ingredients"]["coffee"]:
-                print("Sorry there is no enough coffee")
+            for drink in MENU[types_of_coffees]["ingredients"]:
+                if resources[drink] < MENU[types_of_coffees]["ingredients"][drink]:
+                    print(f"Sorry there is no enough {drink} ")
+                    exit()
             else:
                 price_of_coffee = MENU[types_of_coffees]["cost"]
                 print("Please enter coins: ")
